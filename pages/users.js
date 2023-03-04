@@ -6,20 +6,28 @@ export const getStaticProps = async () => {
   
   return {
     props : {
-      users : data
+      users : data.data
     }
   }
 }
 
 const usersData = ({ users }) => {
   return (
-    <div className="grid grid-cols-4">
-        {users.data.map((user) => {
-          return(<div className="shadow m-5">
-          <div className=""> Name : <span className="font-bold">{`${user.firstname} ${user.lastname}`}</span></div>
-          <div>Username : <span className="font-bold">{user.username}</span></div>
-          <div>{user.email}</div>
-          </div>
+    <div className="grid grid-cols-3">
+        {users.map((user) => {
+          return(
+            <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow mb-4 mx-auto mt-5">
+                <div class="flex justify-end px-4 pt-4">
+                </div>
+                <div class="flex flex-col items-center pb-10">
+                    <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src={user.image} alt="Bonnie image"/>
+                    <h5 class="mb-1 text-xl font-medium text-gray-900 ">{user.firstname} {user.lastname}</h5>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">{user.username}</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">{user.email}</span>
+                    
+                </div>
+            </div>
+            
 
         )})}
  </div>
